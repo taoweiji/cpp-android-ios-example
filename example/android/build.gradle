@@ -1,0 +1,55 @@
+buildscript {
+    repositories {
+        google()
+        jcenter()
+    }
+
+    dependencies {
+        classpath "com.android.tools.build:gradle:4.1.2"
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+rootProject.buildDir = '../../build'
+subprojects {
+    project.buildDir = "${rootProject.buildDir}/${project.name}"
+}
+//subprojects {
+//    project.evaluationDependsOn(':app')
+//}
+
+//task clean(type: Delete) {
+//    delete rootProject.buildDir
+//}
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 30
+
+    lintOptions {
+        disable 'InvalidPackage'
+    }
+
+    defaultConfig {
+        applicationId "com.cross.example"
+        minSdkVersion 16
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            signingConfig signingConfigs.debug
+        }
+    }
+}
+
+dependencies {
+    implementation project(path: ':cross')
+}

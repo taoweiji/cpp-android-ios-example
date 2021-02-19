@@ -1,0 +1,3 @@
+rootProject.name = 'example'
+include ":cross"
+project(":cross").projectDir = new File("../../android")
