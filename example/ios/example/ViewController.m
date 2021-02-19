@@ -6,7 +6,7 @@
 //
 
 #import "ViewController.h"
-#include <url_signature.h>
+#import "Cross.h"
 
 @interface ViewController ()
 
@@ -16,11 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    const char* result = UrlSignature("", NULL);
-    NSString *str2 = [NSString stringWithUTF8String:result];
-    NSLog(str2);
+    NSString* url = @"http://example.com?key2=value2&key3=value3&key1=VALUE1";
+    Cross *cross = [[Cross alloc] init];
+    NSString*newUrl = [cross signatureUrl:url];
+    NSLog(url);
+    NSLog(newUrl);
     // Do any additional setup after loading the view.
 }
-
-
 @end

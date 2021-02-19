@@ -27,40 +27,47 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 
 ```
 ├── CMakeLists.txt
-├── cross.podspec
 ├── android
 │   ├── build.gradle
-│   ├── src
-│   │   └── main
-│   │       ├── AndroidManifest.xml
-│   │       ├── cpp
-│   │       └── java
+│   ├── settings.gradle
+│   └── src
+│       └── main
+│           ├── AndroidManifest.xml
+│           ├── java/com/cross/Cross.java
+│           └── cpp
+│               ├── include
+│               ├── cross.cpp
+│               └── CMakeLists.txt
+├── cross.podspec
 ├── ios
-│   ├── Assets
 │   └── Classes
-│       ├── FlutterPlugin.h
-│       └── FlutterPlugin.m
+│       ├── Cross.h
+│       └── Cross.mm
 ├── src
 │   ├── url_signature
-│   │   ├── include
-│   │   ├── src
-│   │   ├── CMakeLists.txt
+│   │   ├── include/url_signature.h
+│   │   ├── url_signature.cpp
+│   │   └── CMakeLists.txt
 │   └── download
 │       ├── include
 │       ├── src
 │       └── CMakeLists.txt
 ├── third_party
-│   ├── gtest
+│   ├── hash
 │   │   ├── include
 │   │   ├── src
-│   │   ├── CMakeLists.txt
+│   │   └── CMakeLists.txt
 │   └── jsoncpp
 │       ├── include
 │       ├── src
 │       └── CMakeLists.txt
 ├── test
+│   ├── gtest
+│   │   ├── include
+│   │   ├── src
+│   │   └── CMakeLists.txt
 │   ├── main.cpp
-│   ├── CMakeLists.txt
+│   └── CMakeLists.txt
 ├── example 
 │   ├── android #省略
 │   └── ios #省略
@@ -94,6 +101,8 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
     ├── json_value.cpp
     └── json_writer.cpp
 ```
+
+> 在这个项目当中，如果是第三方库，我会把实现代码放到src文件夹，如果是我们自己写的代码，我会把实现代码放到和CMakeLists.txt同一级别的目录。
 
 CMakeLists.txt 的作用主要是暴露当前库的头文件，定义需要参与编译的源码文件。
 

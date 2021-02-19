@@ -11,9 +11,10 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        Cross.initXLog(this);
         setContentView(R.layout.activity_main);
         TextView textView = findViewById(R.id.textView);
-        textView.setText(new Cross().stringFromJNI());
+        String url = "http://example.com?key2=value2&key3=value3&key1=VALUE1";
+        String result = Cross.signatureUrl(url);
+        textView.setText(url + "\n" + result);
     }
 }

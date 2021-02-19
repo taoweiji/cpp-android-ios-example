@@ -1,16 +1,12 @@
 #include <iostream>
-#include "json/json.h"
-#include "md5.h"
+#include "url_signature.h"
+#include <string>
+
+using namespace std;
 
 int main() {
-    Json::Value json;
-    json["name"] = "Wiki";
-    json["age"] = 18;
-    std::cout << json.toStyledString() << std::endl;
-    MD5 md5;
-    md5.add("hello",5);
-    std::cout << md5.getHash() << std::endl;
-    md5.reset();
-    std::cout << md5.getHash() << std::endl;
+    string url = "http://example.com?key2=value2&key3=value3&key1=VALUE1";
+    std::cout << url << std::endl;
+    std::cout << SignatureUrl(url) << std::endl;
     return 0;
 }
