@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#include <url_signature.h>
+
 
 @interface AppDelegate ()
 
@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    const char* result = UrlSignature("", NULL);
+
     return YES;
 }
 
