@@ -1,0 +1,16 @@
+PODS:
+  - cross (0.0.1)
+
+DEPENDENCIES:
+  - cross (from `../../`)
+
+EXTERNAL SOURCES:
+  cross:
+    :path: "../../"
+
+SPEC CHECKSUMS:
+  cross: c04ae937a7aa9b7f5fb1a989187988a3a522d05d
+
+PODFILE CHECKSUM: 5dbf04393ede5ee1e17db1ee3a1a99870cfc1604
+
+COCOAPODS: 1.9.3
