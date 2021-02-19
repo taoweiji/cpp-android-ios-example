@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		06C7163713C78888F3F70FBB /* Pods_example_exampleUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65AF00335078822A39CBD0E7 /* Pods_example_exampleUITests.framework */; };
-		3B28E6A925DFA35000281D66 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6A825DFA35000281D66 /* AppDelegate.m */; };
+		3B28E6A925DFA35000281D66 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6A825DFA35000281D66 /* AppDelegate.mm */; };
 		3B28E6AC25DFA35000281D66 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AB25DFA35000281D66 /* SceneDelegate.m */; };
 		3B28E6AF25DFA35000281D66 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6AE25DFA35000281D66 /* ViewController.m */; };
 		3B28E6B225DFA35000281D66 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B28E6B025DFA35000281D66 /* Main.storyboard */; };
@@ -43,7 +43,7 @@
 		1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		3B28E6A425DFA35000281D66 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28E6A725DFA35000281D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		3B28E6A825DFA35000281D66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3B28E6A825DFA35000281D66 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
 		3B28E6AA25DFA35000281D66 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
 		3B28E6AB25DFA35000281D66 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		3B28E6AD25DFA35000281D66 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				3B28E6A725DFA35000281D66 /* AppDelegate.h */,
-				3B28E6A825DFA35000281D66 /* AppDelegate.m */,
+				3B28E6A825DFA35000281D66 /* AppDelegate.mm */,
 				3B28E6AA25DFA35000281D66 /* SceneDelegate.h */,
 				3B28E6AB25DFA35000281D66 /* SceneDelegate.m */,
 				3B28E6AD25DFA35000281D66 /* ViewController.h */,
@@ -415,7 +415,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3B28E6AF25DFA35000281D66 /* ViewController.m in Sources */,
-				3B28E6A925DFA35000281D66 /* AppDelegate.m in Sources */,
+				3B28E6A925DFA35000281D66 /* AppDelegate.mm in Sources */,
 				3B28E6BA25DFA35300281D66 /* main.m in Sources */,
 				3B28E6AC25DFA35000281D66 /* SceneDelegate.m in Sources */,
 			);

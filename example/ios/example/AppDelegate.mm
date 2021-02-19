@@ -17,7 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-//    UrlSignature("", NULL);
+    const char* result = UrlSignature("", NULL);
     return YES;
 }
 
