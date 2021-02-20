@@ -10,18 +10,18 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 - 高性能，在多数的场景下这个优势并不明确，只有在一些特定的场景下才能发挥他的价值，比如音频、视频；
 - 调用C++库API，有部分的库只提供了C++版本，如果需要访问那么就要使用C++实现。
 
-### 工程设计基本要求
+### 项目基本要求
 
 - 一个工程实现Android和iOS工程师一起编码；
-- 可以添加依赖第三方库；
+- 可以添加依赖第三方C++库；
 - 可以脱离手机实现代码调试；
 - 可以使用手机实现代码调试；
 
 
 
-## 项目设计
+### 项目设计
 
-设计思想参考了 Flutter Plugin 和 [protobuf](https://github.com/protocolbuffers/protobuf)  的目录结构，基于CMake 和 CocoaPods 实现，为大家提供一种多平台协同开发的思路，本篇文章不会把全部的代码贴出来，只会列出设计思想和关键的代码，详细代码请查看 [源码](https://github.com/taoweiji/cpp_best)。
+设计思想参考了 Flutter Plugin 和 [protobuf](https://github.com/protocolbuffers/protobuf)  的目录结构，基于CMake 和 CocoaPods 实现，为大家提供一种多平台协同开发的思路，本篇文章不会把全部的代码贴出来，只会列出设计思想和关键的代码，详细代码请查看 [源码](https://github.com/taoweiji/cpp-android-ios-example)。
 
 #### 目录结构
 
@@ -44,20 +44,16 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 │       ├── Cross.h
 │       └── Cross.mm
 ├── src
-│   ├── url_signature
-│   │   ├── include/url_signature.h
-│   │   ├── url_signature.cpp
-│   │   └── CMakeLists.txt
-│   └── download
-│       ├── include
-│       ├── src
+│   └── url_signature
+│       ├── include/url_signature.h
+│       ├── url_signature.cpp
 │       └── CMakeLists.txt
 ├── third_party
-│   ├── hash
+│   ├── cxxurl
 │   │   ├── include
 │   │   ├── src
 │   │   └── CMakeLists.txt
-│   └── jsoncpp
+│   └── hash
 │       ├── include
 │       ├── src
 │       └── CMakeLists.txt
@@ -160,11 +156,9 @@ add_executable(${PROJECT_NAME} main.cpp)
 target_link_libraries(${PROJECT_NAME} jsoncpp gtest)
 ```
 
-
-
 #### Android
 
-以下是android的目录结构，这部分的代码比较简单，主要是包含了JNI部分的代码
+以下是android的目录结构，这部分的代码主要是实现Java和C++的转换。
 
 ```
 ├── build.gradle
@@ -229,28 +223,53 @@ dependencies {
 ```
 cmake_minimum_required(VERSION 3.10.2)
 project("cross")
-add_library(${PROJECT_NAME} SHARED native-lib.cpp)
+include_directories(export_include)
+add_library(${PROJECT_NAME} SHARED cross.cpp)
 find_library(log-lib log)
-target_link_libraries(${PROJECT_NAME} jsoncpp ${log-lib})
+target_link_libraries(${PROJECT_NAME} ${log-lib} url_signature)
 ```
 
-##### native-lib.cpp
+##### cross.cpp
+
+```c++
+#include <jni.h>
+#include <string>
+#include "url_signature.h"
+
+extern "C"
+JNIEXPORT jstring JNICALL
+Java_com_cross_Cross_signatureUrl(JNIEnv *env, jclass clazz, jstring url) {
+    const char *str = env->GetStringUTFChars(url, JNI_FALSE);
+    std::string result = SignatureUrl(str);
+    return env->NewStringUTF(result.c_str());
+}
+```
 
 ##### Cross.java
+
+```java
+package com.cross;
+public class Cross {
+    static {
+        System.loadLibrary("cross");
+    }
+    public static native String signatureUrl(String url);
+}
+```
 
 
 
 #### iOS
 
-由于 podspec 无法指定父级的文件，如果放在ios目录下，那么就无法关联src和third_party的源文件，所以就把 cross.podspec 放到工程的根目录。
+由于 podspec 无法指定父级的文件，如果放在ios目录下，那么就无法关联src和third_party的源文件，所以就把 cross.podspec 放到工程的根目录。Cross 类主要就是负责对接OC和C++，作为统一的接口类。
 
 ```
 ├── cross.podspec
 ├── ios
 │   ├── Assets
 │   └── Classes
-│       ├── FlutterPlugin.h
-│       └── FlutterPlugin.m
+│       ├── Cross.h
+│       └── Cross.mm
 ```
 
 ##### cross.podspec
@@ -266,26 +285,41 @@ Pod::Spec.new do |s|
   s.author           = { 'Your Company' => 'email@example.com' }
   s.source           = { :path => '.' }
   # 设置源文件，切记不要把测试代码包含进来
-  s.source_files = 'ios/Classes/**/*','third_party/jsoncpp/**/*.{cc,cpp,h}','src/**/*.{cc,cpp,h}'
+  s.source_files = 'ios/Classes/**/*','third_party/**/*.{cc,cpp,h}','src/**/*.{cc,cpp,h}'
   # 暴露头文件，否则引用该spec的项目无法找到头文件
-  s.public_header_files = 'ios/Classes/**/*.h','third_party/jsoncpp/include/**/*.h','src/url_signature/include/*.h'
+  s.public_header_files = 'ios/Classes/**/*.h','src/url_signature/include/*.h'
   s.platform = :ios, '8.0'
   # 必须配置HEADER_SEARCH_PATHS属性，是否会导致项目中C++找不到头文件
   s.xcconfig = {
-        'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/third_party/jsoncpp/include/" "${PODS_TARGET_SRCROOT}/src/download/include/" "${PODS_TARGET_SRCROOT}/src/url_signature/include/"'
+        'HEADER_SEARCH_PATHS' => '"${PODS_TARGET_SRCROOT}/third_party/cxxurl/include/" "${PODS_TARGET_SRCROOT}/third_party/hash/include/" "${PODS_TARGET_SRCROOT}/src/url_signature/include/"'
   }
 end
 ```
 
-##### FlutterPlugin.h
+##### Cross.h
 
+```objective-c
+@interface Cross : NSObject
+- (NSString*)signatureUrl:(NSString *)url;
+@end
+```
 
+##### Cross.mm
 
-##### FlutterPlugin.m
+```objective-c
+#import "Cross.h"
+#include <string>
+#include <url_signature.h>
 
-
-
-
+@implementation Cross
+- (NSString*)signatureUrl:(NSString *)url{
+    std::string str = [url UTF8String];
+    std::string result = SignatureUrl(str);
+    NSString *newUrl = [NSString stringWithUTF8String:result.c_str()];
+    return newUrl;
+}
+@end
+```
 
 ### 示例设计
 
@@ -354,9 +388,7 @@ end
 
 
 
-### 如何编码？
-
-
+##### 如何编码？
 
 如果是Android开发者，建议使用 Android Studio 打开 example/android，文件目录选择 Android 风格的，就可以在一个环境下同时编写 C++、Java、还有example的代码。
 
@@ -370,23 +402,19 @@ end
 
 截图
 
+##### 打包
+
+
+
 ### 总结
 
-通常C++部分的代码不会和APP主工程的代码放到同一个仓库，而且分开开发，C++工程会打包成特定的文件，比如Android会打包成aar发布到maven仓库中，而iOS就会发布到内部的CocoaPods仓库，通过外部库的引入到主项目当中。
+通常C++部分的代码不会和APP主工程的代码放到同一个仓库，而是独立开发，比如Android会打包成aar发布到maven仓库中，而iOS就会发布到内部的CocoaPods仓库，通过外部库的引入到主项目当中。
+
+源码：https://github.com/taoweiji/cpp-android-ios-example
 
 
 
-##### 源码
-
-Https://githu.com/taoweiji/cpp-android-ios-example
-
-
-
-
-
-## 附加资料
-
-https://www.cnblogs.com/skyus/articles/8524408.html
+### 附加资料
 
 ##### 集成开发环境（IDE）
 
@@ -404,9 +432,8 @@ https://www.cnblogs.com/skyus/articles/8524408.html
   - [Apache C++ Standard Library](http://stdcxx.apache.org/)：主要包含了算法和容器的
 - json：[ jsoncpp](https://github.com/open-source-parsers/jsoncpp) 和 [nlohmann/json](https://github.com/nlohmann/json) 都是不错的选择。
 - 压缩：libzip2
-- 网络：Boost.Asio](http://think-async.com/)：用于网络和底层I/O编程的跨平台的C++库。
-- MD5/SHA1：
-- 日志：腾讯开发的 [xlog](https://github.com/Tencent/mars) 是一个不错的选择，缺点是不支持x86，无法在模拟器上调试
+- 网络：[Boost.Asio](http://think-async.com/)：用于网络和底层I/O编程的跨平台的C++库。
+- MD5/SHA1：[hash-library](https://github.com/stbrumme/hash-library)
 - 调试、单元测试：CMake自带的 [CTest](https://cmake.org/cmake/help/latest/command/add_test.html)、[googletest](https://github.com/google/googletest)；
 - 脚本、虚拟机：
   - [V8](http://code.google.com/p/v8/)：Google开发并维护的高性能 JavaScript 引擎；
