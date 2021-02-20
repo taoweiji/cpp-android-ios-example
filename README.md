@@ -147,15 +147,15 @@ endif ()
 
 ##### 库依赖
 
-通过上面的方式把各个子项目关联起来后，那么我们就可以非常简单在一个子项目中引用另外一个子项目，这里以 test/CMakeLists.txt  为例，我们需要在test项目中添加 jsoncpp 和 gtest 的依赖。
+通过上面的方式把各个子项目关联起来后，那么我们就可以非常简单在一个子项目中引用另外一个子项目，这里以 src/url_signature/CMakeLists.txt  为例，我们需要在 url_signature 子项目添加 cxxurl 和 hash 的依赖。
 
 ```
 cmake_minimum_required(VERSION 3.10.2)
-project(test)
-# 添加可执行代码
-add_executable(${PROJECT_NAME} main.cpp)
-# 添加库依赖
-target_link_libraries(${PROJECT_NAME} gtest url_signature)
+set(CMAKE_CXX_STANDARD 14)
+project(url_signature)
+add_library(${PROJECT_NAME} url_signature.cpp)
+target_include_directories(${PROJECT_NAME} PUBLIC ${PROJECT_SOURCE_DIR}/include)
+target_link_libraries(${PROJECT_NAME} cxxurl hash)
 ```
 
 #### Android
