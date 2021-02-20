@@ -136,12 +136,14 @@ endif ()
 
 > 重点：android/build.gradle定义了 CMakeLists.txt 的路径，而这个路径必须指向根目录的 CMakeLists.txt。
 >
+> ```groovy
 > externalNativeBuild {
->         cmake {
->             path "../CMakeLists.txt" // 这里需要指向项目根目录的 CMakeLists.txt
->             version "3.10.2"
->       }
->  }
+>      cmake {
+>          path "../CMakeLists.txt" // 这里需要指向项目根目录的 CMakeLists.txt
+>          version "3.10.2"
+>    }
+> }
+> ```
 
 ##### 库依赖
 
