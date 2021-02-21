@@ -436,6 +436,6 @@ end
 - cmake：是目前主流的构建系统，简单易用，也适合构建大型项目，常用的第三方库基本都支持cmake，可以非常简单添加第三方依赖，强烈推荐；
 - makefile：是最基本的构建系统
 - CocoaPods：是用于开发OC和Swift项目的构建系统，同样也支持C++，通常用于iOS应用开发；
-- Android.mk：Android 上一代的构建方式，目前Android开发默认的构建方式已经变成了cmake；
+- ndk-build：Android 上一代的构建方式，配置文件为Android.mk，目前Android开发默认的构建方式已经变成了cmake；
 - bazel：Google开源的构建系统，TensorFlow和Flutter都是基于bazel构建，使用复杂，适合大型的项目；
 
