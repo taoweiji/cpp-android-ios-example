@@ -1,4 +1,4 @@
-# 一文看懂如何使用 C++ 协同开发 Android、iOS 项目
+# C++工程：一文看懂如何使用 C++ 开发 Android、iOS 项目
 
 
 
@@ -387,19 +387,11 @@ target 'example' do
 end
 ```
 
-
-
 ##### 如何编码？
 
 - 如果是Android开发者，建议使用 Android Studio 打开 example/android，文件目录选择 Android 风格的，就可以在一个环境下同时编写 C++、Java、还有example的代码。
 - 如果是iOS也是同样打开example/ios项目，记得要先执行 pod install 哦。
 - 但多数情况下还是建议使用 vscode 或者 clion 打开 工程的根目录，在 test 目录下编写测试代码，脱离与平台关联进行开发调试，这样的效率更高。
-
-
-
-##### 打包
-
-待补充
 
 ### 总结
 
