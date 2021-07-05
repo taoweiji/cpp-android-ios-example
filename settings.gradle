@@ -1,0 +1,5 @@
+rootProject.name = 'cpp-android-ios-example'
+include ":cross"
+project(":cross").projectDir = new File("android")
+include ":example"
+project(":example").projectDir = new File("example/android")

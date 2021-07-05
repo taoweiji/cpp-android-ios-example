@@ -29,7 +29,6 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 ├── CMakeLists.txt
 ├── android
 │   ├── build.gradle
-│   ├── settings.gradle
 │   └── src
 │       └── main
 │           ├── AndroidManifest.xml
@@ -67,6 +66,9 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 ├── example 
 │   ├── android #省略
 │   └── ios #省略
+├── build.gradle
+├── gradle.properties
+├── settings.gradle
 ```
 
 上面的目录结构主要分为：
@@ -78,6 +80,7 @@ C/C++是相对底层的语言，相比OC、Swift、Kotlin、Java等都要难，�
 - 测试代码（test）：这里主要是包含了我们日常开发调试编写的测试代码，也可以包含单元测试代码；
 - 第三方库（third_party）：这里是放第三方库，每一个库都有独立的文件夹和CMakeLists.txt，管理自身的头文件和代码；
 - 示例（example/android、example/ios）
+- Gradle脚本文件：build.gradle/gradle.properties/settings.gradle
 
 
 
@@ -164,30 +167,23 @@ target_link_libraries(${PROJECT_NAME} cxxurl hash)
 
 ```
 ├── build.gradle
+├── gradle.properties
 ├── settings.gradle
-└── src
-    └── main
+└── android
+    ├── build.gradle
+    └── src/main
         ├── AndroidManifest.xml
         ├── cpp
         │   ├── CMakeLists.txt
         │   └── native-lib.cpp
         └── java/com/cross/Cross.java
 ```
+从上面的目录可以看到，项目的根目录有 build.gradle、gradle.properties和settings.gradle，之所以放在根目录是
+
 
 ##### android/build.gradle
 
 ```groovy
-group 'com.cross'
-version '1.0'
-buildscript {
-    repositories {
-        google()
-        jcenter()
-    }
-    dependencies {
-        classpath "com.android.tools.build:gradle:4.1.2"
-    }
-}
 apply plugin: 'com.android.library'
 android {
     compileSdkVersion 30
