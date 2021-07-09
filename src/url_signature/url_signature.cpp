@@ -4,7 +4,6 @@
 
 #include "url_signature.h"
 #include <cxxurl/url.hpp>
-#include <iostream>
 #include <algorithm>
 #include <md5.h>
 #include <map>
