@@ -236,10 +236,11 @@ target_link_libraries(${PROJECT_NAME} ${log-lib} url_signature)
 
 extern "C"
 JNIEXPORT jstring JNICALL
-Java_com_cross_Cross_signatureUrl(JNIEnv *env, jclass clazz, jstring url) {
-    const char *str = env->GetStringUTFChars(url, JNI_FALSE);
-    std::string result = SignatureUrl(str);
-    return env->NewStringUTF(result.c_str());
+Java_com_cross_Cross_signatureUrl(JNIEnv *env, jclass clazz, jstring j_url) {
+    const char *url = env->GetStringUTFChars(j_url, JNI_FALSE);
+    auto result = env->NewStringUTF(SignatureUrl(url).c_str());
+    env->ReleaseStringUTFChars(j_url, url);
+    return result;
 }
 ```
 
