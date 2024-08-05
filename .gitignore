@@ -11,3 +11,5 @@
 cmake-build-debug
 gradle-wrapper.jar
 .vscode
+oh_modules/
+/.hvigor

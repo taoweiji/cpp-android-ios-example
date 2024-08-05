@@ -1,0 +1,5 @@
+{
+  "libcross.so": {
+    "source": "src/mock/Libcross.mock.ets"
+  }
+}
