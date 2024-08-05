@@ -30,8 +30,8 @@ static napi_value Add(napi_env env, napi_callback_info info) {
 static std::string value2String(napi_env env, napi_value value) {
     size_t stringSize = 0;
     napi_get_value_string_utf8(env, value, nullptr, 0, &stringSize); // 获取字符串长度
-    char buff[stringSize];
-    napi_get_value_string_utf8(env, value, buff, stringSize, &stringSize); // 根据长度传换成字符串
+    char buff[stringSize + 1];
+    napi_get_value_string_utf8(env, value, buff, stringSize + 1, &stringSize); // 根据长度传换成字符串
     return buff;
 }
 
