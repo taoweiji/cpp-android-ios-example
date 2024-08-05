@@ -30,7 +30,7 @@ android {
     externalNativeBuild {
         cmake {
             // 这里需要指向项目根目录的 CMakeLists.txt 文件
-            path "../CMakeLists.txt"
+            path "../../CMakeLists.txt"
             version "3.10.2"
         }
     }

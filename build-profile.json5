@@ -47,7 +47,7 @@
     },
     {
       "name": "harmony",
-      "srcPath": "./harmony",
+      "srcPath": "./platforms/harmony",
       "targets": [
         {
           "name": "default",

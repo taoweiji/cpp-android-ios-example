@@ -2,9 +2,9 @@
   "apiType": "stageMode",
   "buildOption": {
     "externalNativeOptions": {
-      "path": "../CMakeLists.txt",
+      "path": "../../CMakeLists.txt",
       "arguments": "-DHARMONY=TRUE",
-      "cppFlags": "",
+      "cppFlags": ""
     }
   },
   "buildOptionSet": [

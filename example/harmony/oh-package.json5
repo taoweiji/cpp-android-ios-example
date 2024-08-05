@@ -6,7 +6,7 @@
   "author": "",
   "license": "",
   "dependencies": {
-    "harmony": "file:../../harmony"
+    "harmony": "file:../../platforms/harmony"
   }
 }
 
