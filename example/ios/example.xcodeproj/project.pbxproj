@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,7 @@
 		3B28E6B425DFA35300281D66 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3B28E6B325DFA35300281D66 /* Assets.xcassets */; };
 		3B28E6B725DFA35300281D66 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3B28E6B525DFA35300281D66 /* LaunchScreen.storyboard */; };
 		3B28E6BA25DFA35300281D66 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3B28E6B925DFA35300281D66 /* main.m */; };
-		807DEFBAC099AA4FDA920917 /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1027DB460DF346CACEACC6DD /* Pods_example.framework */; };
+		5AB10A366C3CB7F6C928965B /* Pods_example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC3E8098F376568C89C7A444 /* Pods_example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,8 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		1027DB460DF346CACEACC6DD /* Pods_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
+		245C09EBB5A009D148698F18 /* Pods-example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.release.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.release.xcconfig"; sourceTree = "<group>"; };
 		3B28E6A425DFA35000281D66 /* example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28E6A725DFA35000281D66 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		3B28E6A825DFA35000281D66 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -51,7 +50,8 @@
 		3B28E6B925DFA35300281D66 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		3B28E6BF25DFA35300281D66 /* exampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3B28E6CA25DFA35300281D66 /* exampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = exampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E7B7D277F0DCAB91658C6F7 /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
+		41D16FA4A4E559124315FB9E /* Pods-example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-example.debug.xcconfig"; path = "Target Support Files/Pods-example/Pods-example.debug.xcconfig"; sourceTree = "<group>"; };
+		BC3E8098F376568C89C7A444 /* Pods_example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				807DEFBAC099AA4FDA920917 /* Pods_example.framework in Frameworks */,
+				5AB10A366C3CB7F6C928965B /* Pods_example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,21 +80,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1C824774272F8C359CF8A53D /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				1027DB460DF346CACEACC6DD /* Pods_example.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		3B28E69B25DFA35000281D66 = {
 			isa = PBXGroup;
 			children = (
 				3B28E6A625DFA35000281D66 /* example */,
 				3B28E6A525DFA35000281D66 /* Products */,
 				B61CA4D11F754155720DDDB2 /* Pods */,
-				1C824774272F8C359CF8A53D /* Frameworks */,
+				816292E5B695E119CE9B0B5D /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -126,11 +118,19 @@
 			path = example;
 			sourceTree = "<group>";
 		};
+		816292E5B695E119CE9B0B5D /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BC3E8098F376568C89C7A444 /* Pods_example.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B61CA4D11F754155720DDDB2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6E7B7D277F0DCAB91658C6F7 /* Pods-example.debug.xcconfig */,
-				1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */,
+				41D16FA4A4E559124315FB9E /* Pods-example.debug.xcconfig */,
+				245C09EBB5A009D148698F18 /* Pods-example.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -142,11 +142,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3B28E6D325DFA35300281D66 /* Build configuration list for PBXNativeTarget "example" */;
 			buildPhases = (
-				E488CDC57A33E96F19563425 /* [CP] Check Pods Manifest.lock */,
+				6C9218D7877840C2EB182D0E /* [CP] Check Pods Manifest.lock */,
 				3B28E6A025DFA35000281D66 /* Sources */,
 				3B28E6A125DFA35000281D66 /* Frameworks */,
 				3B28E6A225DFA35000281D66 /* Resources */,
-				321EB7F7EEDCFCAAE240A364 /* [CP] Embed Pods Frameworks */,
+				68C6C46ADD03F299195AD749 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -262,7 +262,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		321EB7F7EEDCFCAAE240A364 /* [CP] Embed Pods Frameworks */ = {
+		68C6C46ADD03F299195AD749 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -279,7 +279,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-example/Pods-example-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		E488CDC57A33E96F19563425 /* [CP] Check Pods Manifest.lock */ = {
+		6C9218D7877840C2EB182D0E /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -478,18 +478,18 @@
 		};
 		3B28E6D425DFA35300281D66 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6E7B7D277F0DCAB91658C6F7 /* Pods-example.debug.xcconfig */;
+			baseConfigurationReference = 41D16FA4A4E559124315FB9E /* Pods-example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV6D89RU7N;
+				DEVELOPMENT_TEAM = M2SAYTW73V;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
@@ -498,18 +498,18 @@
 		};
 		3B28E6D525DFA35300281D66 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1028CBABAFF5FAC8F2C70DD6 /* Pods-example.release.xcconfig */;
+			baseConfigurationReference = 245C09EBB5A009D148698F18 /* Pods-example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = BV6D89RU7N;
+				DEVELOPMENT_TEAM = M2SAYTW73V;
 				INFOPLIST_FILE = example/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cross.example2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				USER_HEADER_SEARCH_PATHS = "${SRCROOT}/**";
